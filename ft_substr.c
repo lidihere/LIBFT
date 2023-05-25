@@ -6,7 +6,7 @@
 /*   By: lidihere <lidihere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 16:20:06 by lidihere          #+#    #+#             */
-/*   Updated: 2023/05/09 16:57:02 by lidihere         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:27:09 by lidihere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (ft_strlen(s) < start)
 	{
 		s2 = malloc(1);
-		s2[0] = NULL;
+		s2[0] = '\0';
 		return (s2);
 	}
 	if (ft_strlen(s) < start + len)

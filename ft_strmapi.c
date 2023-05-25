@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lidihere <lidihere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 19:08:41 by lidihere          #+#    #+#             */
-/*   Updated: 2023/05/11 16:15:53 by lidihere         ###   ########.fr       */
+/*   Created: 2023/05/15 18:13:49 by lidihere          #+#    #+#             */
+/*   Updated: 2023/05/24 18:13:56 by lidihere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	start;
-	int	end;
+	int		i;
+	char	*str;
 
-	if (!s1)
+	if (!s || !f)
 		return (NULL);
-	start = 0;
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	end = ft_strlen(s1 + start);
-	while (end && ft_strchr(set, s1[start + end - 1]))
-		end --;
-	return (ft_substr(s1, start, end));
+	i = ft_strlen((char *)s);
+	str = malloc((i + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
